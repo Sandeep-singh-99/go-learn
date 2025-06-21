@@ -5,6 +5,12 @@ import (
 	"time"
 )
 
+type Customer struct {
+	ID        string
+	Name      string
+	Email     string
+}
+
 // order struct
 
 type Order struct {
@@ -13,6 +19,7 @@ type Order struct {
 	Total     float64
 	status    string
 	createdAt time.Time // nano seconds precision
+	Customer
 }
 
 func newOrder(id string, items []string, total float64) *Order {
@@ -85,6 +92,24 @@ func main() {
 	}
 
 	fmt.Println("Language Name:", language)
+
+	newCustomer := Customer{
+		ID:    "C001",
+		Name:  "John Doe",
+		Email: "Sk33@gammail.com",
+	}
+
+
+	order2 := Order{
+		ID:        "98765",
+		Items:     []string{"item7", "item8"},
+		Total:     39.99,
+		status:    "processing",
+		createdAt: time.Now(),
+		Customer: newCustomer,
+	}
+
+	fmt.Println("Order2 ID:", order2)
 
 
 }
