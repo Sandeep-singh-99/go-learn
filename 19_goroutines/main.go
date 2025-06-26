@@ -2,18 +2,22 @@ package main
 
 import (
 	"fmt"
-	"time"
+	"sync"
 )
 
-func task(id int) {
+func task(id int, w *sync.WaitGroup) {
+	defer w.Done()
 	fmt.Println("Task", id, "is running")
 }
 
 func main() {
-	for i := 1; i <= 5; i++ {
-		go task(i)
-	}
+	var wg sync.WaitGroup
 
-	time.Sleep(time.Second * 2) // Wait for goroutines to finish
-	fmt.Println("All tasks are complete")
+	for i := 1; i <= 5; i++ {
+		wg.Add(1)
+		go task(i, &wg)
+	}
+	
+	wg.Wait()
+	fmt.Println("All tasks completed")
 }
