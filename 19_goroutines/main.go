@@ -21,3 +21,4 @@ func main() {
 	wg.Wait()
 	fmt.Println("All tasks completed")
 }
+
