@@ -15,7 +15,6 @@ func main() {
 	fmt.Println("Hello, " + name + "!")
 	fmt.Println("Is student: ", isStudent)
 
-
 	var age int = 20
 	fmt.Println("Age:", age)
 
@@ -24,9 +23,23 @@ func main() {
 	name1 := "Alice"
 	fmt.Println("Hello, " + name1 + "!")
 
-
 	var name2 string
 
 	name2 = "Bob"
 	fmt.Println("Hello, " + name2 + "!")
+
+	var age1 int
+
+	fmt.Print(age1)
+
+	// Grouped declaration (factored block)
+	var (
+		serverPort int    = 8080
+		hostName   string = "localhost"
+		debugMode  bool   = false
+	)
+
+	fmt.Print(serverPort, "\n", hostName, "\n", debugMode)
 }
+
+// := only inside functions
